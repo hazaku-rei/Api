@@ -2439,6 +2439,119 @@ router.get('/maker/tololserti', async(req, res, next) => {
     res.json(loghandler.invalidKey)
   }
 });
+router.get('/maker/fuckboyserti', async(req, res, next) => {
+  const apikey = req.query.apikey;
+  const text = req.query.text;
+  if(!text) return res.json(loghandler.nottext)
+  if(!apikey) return res.json(loghandler.notparam)
+  if(listkey.includes(apikey)){
+  let hasil = `https://api.lolhuman.xyz/api/fuckboy?apikey=muzharzain&name=${text}`
+  data = await fetch(hasil).then(v => v.buffer())
+         await fs.writeFileSync(__path +'/tmp/fuckboyserti.jpeg', data)
+        res.sendFile(__path+'/tmp/fuckboy.jpeg')
+  } else {
+    res.json(loghandler.invalidKey)
+  }
+});
+router.get('/maker/fuckgirlserti', async(req, res, next) => {
+  const apikey = req.query.apikey;
+  const text = req.query.text;
+  if(!text) return res.json(loghandler.nottext)
+  if(!apikey) return res.json(loghandler.notparam)
+  if(listkey.includes(apikey)){
+  let hasil = `https://api.lolhuman.xyz/api/fuckgirl?apikey=muzharzain&name=${text}`
+  data = await fetch(hasil).then(v => v.buffer())
+         await fs.writeFileSync(__path +'/tmp/fuckgirlserti.jpeg', data)
+        res.sendFile(__path+'/tmp/fuckgirlserti.jpeg')
+  } else {
+    res.json(loghandler.invalidKey)
+  }
+});
+router.get('/maker/bucinserti', async(req, res, next) => {
+  const apikey = req.query.apikey;
+  const text = req.query.text;
+  if(!text) return res.json(loghandler.nottext)
+  if(!apikey) return res.json(loghandler.notparam)
+  if(listkey.includes(apikey)){
+  let hasil = `https://api.lolhuman.xyz/api/bucinserti?apikey=muzharzain&name=${text}`
+  data = await fetch(hasil).then(v => v.buffer())
+         await fs.writeFileSync(__path +'/tmp/bucinserti.jpeg', data)
+        res.sendFile(__path+'/tmp/bucinserti.jpeg')
+  } else {
+    res.json(loghandler.invalidKey)
+  }
+});
+router.get('/maker/pacarserti', async(req, res, next) => {
+  const apikey = req.query.apikey;
+  const text = req.query.text;
+  const text2 = req.query.text;
+  if(!text) return res.json(loghandler.nottext)
+  if(!apikey) return res.json(loghandler.notparam)
+  if(listkey.includes(apikey)){
+  let hasil = `https://api.lolhuman.xyz/api/pacarserti?apikey=muzharzain&name1=${text}&name2=${text}2`
+  data = await fetch(hasil).then(v => v.buffer())
+         await fs.writeFileSync(__path +'/tmp/pacarserti.jpeg', data)
+        res.sendFile(__path+'/tmp/pacarserti.jpeg')
+  } else {
+    res.json(loghandler.invalidKey)
+  }
+});
+router.get('/maker/goodboyserti', async(req, res, next) => {
+  const apikey = req.query.apikey;
+  const text = req.query.text;
+  if(!text) return res.json(loghandler.nottext)
+  if(!apikey) return res.json(loghandler.notparam)
+  if(listkey.includes(apikey)){
+  let hasil = `https://api.lolhuman.xyz/api/goodboy?apikey=muzharzain&name=${text}`
+  data = await fetch(hasil).then(v => v.buffer())
+         await fs.writeFileSync(__path +'/tmp/goodboyserti.jpeg', data)
+        res.sendFile(__path+'/tmp/goodboyserti.jpeg')
+  } else {
+    res.json(loghandler.invalidKey)
+  }
+});
+router.get('/maker/goodgirlserti', async(req, res, next) => {
+  const apikey = req.query.apikey;
+  const text = req.query.text;
+  if(!text) return res.json(loghandler.nottext)
+  if(!apikey) return res.json(loghandler.notparam)
+  if(listkey.includes(apikey)){
+  let hasil = `https://api.lolhuman.xyz/api/goodgirl?apikey=muzharzain&name=${text}`
+  data = await fetch(hasil).then(v => v.buffer())
+         await fs.writeFileSync(__path +'/tmp/goodgirlserti.jpeg', data)
+        res.sendFile(__path+'/tmp/goodgirlserti.jpeg')
+  } else {
+    res.json(loghandler.invalidKey)
+  }
+});
+router.get('/maker/badboyserti', async(req, res, next) => {
+  const apikey = req.query.apikey;
+  const text = req.query.text;
+  if(!text) return res.json(loghandler.nottext)
+  if(!apikey) return res.json(loghandler.notparam)
+  if(listkey.includes(apikey)){
+  let hasil = `https://api.lolhuman.xyz/api/badboy?apikey=muzharzain&name=${text}`
+  data = await fetch(hasil).then(v => v.buffer())
+         await fs.writeFileSync(__path +'/tmp/badboyserti.jpeg', data)
+        res.sendFile(__path+'/tmp/badboyserti.jpeg')
+  } else {
+    res.json(loghandler.invalidKey)
+  }
+});
+router.get('/maker/badgirlserti', async(req, res, next) => {
+  const apikey = req.query.apikey;
+  const text = req.query.text;
+  if(!text) return res.json(loghandler.nottext)
+  if(!apikey) return res.json(loghandler.notparam)
+  if(listkey.includes(apikey)){
+  let hasil = `https://api.lolhuman.xyz/api/badgirl?apikey=muzharzain&name=${text}`
+  data = await fetch(hasil).then(v => v.buffer())
+         await fs.writeFileSync(__path +'/tmp/badgirlserti.jpeg', data)
+        res.sendFile(__path+'/tmp/badgirlserti.jpeg')
+  } else {
+    res.json(loghandler.invalidKey)
+  }
+});
 router.get('/maker/emoji2png', async(req, res, next) => {
   const apikey = req.query.apikey;
   const Emoji = req.query.text;
