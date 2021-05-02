@@ -2425,7 +2425,20 @@ router.get('/maker/skatch', async(req, res, next) => {
     res.json(loghandler.invalidKey)
   }
 });
-
+router.get('/maker/tololserti', async(req, res, next) => {
+  const apikey = req.query.apikey;
+  const url = req.query.url;
+  if(!text) return res.json(loghandler.noturl)
+  if(!apikey) return res.json(loghandler.notparam)
+  if(listkey.includes(apikey)){
+  let hasil = `https://lolhuman.herokuapp.com/api/toloserti?apikey=muzharzain&name=${text}`
+  data = await fetch(hasil).then(v => v.buffer())
+         await fs.writeFileSync(__path +'/tmp/tololserti.jpeg', data)
+        res.sendFile(__path+'/tmp/tololserti.jpeg')
+  } else {
+    res.json(loghandler.invalidKey)
+  }
+});
 router.get('/maker/emoji2png', async(req, res, next) => {
   const apikey = req.query.apikey;
   const Emoji = req.query.text;
