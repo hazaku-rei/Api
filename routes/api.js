@@ -2427,8 +2427,8 @@ router.get('/maker/skatch', async(req, res, next) => {
 });
 router.get('/maker/tololserti', async(req, res, next) => {
   const apikey = req.query.apikey;
-  const url = req.query.url;
-  if(!text) return res.json(loghandler.noturl)
+  const text = req.query.text;
+  if(!text) return res.json(loghandler.nottext)
   if(!apikey) return res.json(loghandler.notparam)
   if(listkey.includes(apikey)){
   let hasil = `https://lolhuman.herokuapp.com/api/toloserti?apikey=muzharzain&name=${text}`
