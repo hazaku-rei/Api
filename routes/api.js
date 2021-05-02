@@ -19,7 +19,12 @@ var dotenv = require("dotenv").config()
 var fs = require('fs');
 var TikTokScraper = require('tiktok-scraper');
 var { EmojiAPI } = require("emoji-api");
+var { tamHari, tamWaktu, tamtanggal, tamJir, tamFormal } = require(__path + '/lib/time');
+var moment = require("moment-timezone") 
 var emoji = new EmojiAPI();
+const waktu_wita = moment.tz('Asia/Makassar').format('DD/MM/YYYY HH-mm-ss')
+const waktu_wit = moment.tz('Asia/Jayapura').format('DD/MM/YYYY HH-mm-ss')
+const waktu_wib = moment.tz('Asia/Jakarta').format('DD/MM/YYYY HH-mm-ss')
 var router  = express.Router();
 var { color, bgcolor } = require(__path + '/lib/color.js');
 var { fetchJson } = require(__path + '/lib/fetcher.js');
@@ -175,7 +180,7 @@ Akhir Pesan Error
 
 router.use(favicon(__path + "/views/favicon.ico"));
 
-const listkey = ["YudaXwer", "manogay"];
+const listkey = ["YudaXwer", "4cc637uu866227y666"];
 
 router.post("/apikey", async (req, res, next) => {
   const key = req.query.key;
@@ -190,6 +195,23 @@ router.post("/apikey", async (req, res, next) => {
     });
   }
 });
+//waktu
+🗿
+const WaktuJKt = new Date().toLocaleString("en-US", {timeZone: 'Asia/Makassar'});
+ const WaktujKT = new Date().toLocaleString("en-US", {timeZone: 'Asia/Jakarta'});
+ const WaktuJkT = new Date().toLocaleString("en-US", {timeZone: 'Asia/Jayapura'});
+ var countDownDateTahunBaru = new Date("Jan 1, 2022 00:00:00").getTime();
+ var countDownDateIdulAdha = new Date("Jul 20, 2021 00:00:00").getTime();
+ var countDownDateLebaran = new Date("May 13, 2021 00:00:00").getTime();
+ var now = new Date().getTime();
+ function kurangwaktu(waktunya, waktuskrg){
+ var distance = waktunya - waktuskrg;
+ var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+ var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+ var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+ var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+ return days + " Hari | " + hours + " Jam | " + minutes + " Menit | " + seconds + " Detik "
+ }
 
 // delete apikey
 
@@ -2454,6 +2476,7 @@ router.get('/maker/emoji2png', async(req, res, next) => {
   }
 });
 
+
 router.get('/web2plain-text', async(req, res, next) => {
   const apikey = req.query.apikey;
   const url = req.query.url;
@@ -2480,7 +2503,94 @@ router.get('/web2plain-text', async(req, res, next) => {
     res.json(loghandler.invalidKey)
   }
 });
+router.get('/hitungmundur', async (req, res, ) => {
+        var apikeyInput = req.query.apikey,
+            bulan = req.query.bulan,
+            tanggal = req.query.tanggal,
+            tahun = req.query.tahun
+            
+	if(!apikeyInput) return res.json(loghandler.notparam)
+	if(apikeyInput != `YudaXwer`) return res.json(loghandler.invalidKey)
+	if (!bulan) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter bulan", Comtoh : "contoh: 1 format (angka (satuan) bukan 01)"})
+    if (!tanggal) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter tanggal", Comtoh: "contoh: 01 (jika 1 - 10) / 11 - 30 (jika diatasnya)"})
+    if (!tahun) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter tahun", Comtoh: "contoh: 2020 (4 digit)"})
+	if(isNaN(tanggal)) return res.json({ status : false, creator : `${creator}`, message : 'tanggal harus berupa angka!!'})
+	if(isNaN(tahun)) return res.json({ status : false, creator : `${creator}`, message : 'tahun harus berupa angka!!'})
+	if(isNaN(bulan)) return res.json({ status : false, creator : `${creator}`, message : 'bulan harus berupa angka!!'})
+	
+try { 
+ var countDownDateTes = new Date(`${bulan} ${tanggal}, ${tahun} 00:00:00`).getTime();
+ var nows = new Date().getTime();
+ function countDown(countDownDateTes, nows){
+ var distances = countDownDateTes - nows;
+ var haris = Math.floor(distances / (1000 * 60 * 60 * 24));
+ var jams = Math.floor((distances % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+ var menits = Math.floor((distances % (1000 * 60 * 60)) / (1000 * 60));
+ var detiks = Math.floor((distances % (1000 * 60)) / 1000);
+ return haris + " Hari | " + jams + " Jam | " + menits + " Menit | " + detiks + " Detik "
+ }
+  res.json({
+    author: 'Yuda',
+    Asu: {
+   Ktl: `${countDown(countDownDateTes, now)}`
+    }
+  })
+  } catch (e) {
+                	console.log(e);
+                res.json(loghandler.error)
+                }
+});
 
+router.get('/waktu-wita', async (req, res, next) => {
+        var apikeyInput = req.query.apikey
+            
+	if(!apikeyInput) return res.json(loghandler.notparam)
+	if(apikeyInput != `YudaXwer`) return res.json(loghandler.invalidKey)
+	
+  res.json({
+    author: 'Yuda',
+    Pantek: {
+    Kontol: `${waktu_wita}`
+    }
+  })
+           .catch(e => {
+             res.json(loghandler.error)
+         })
+});
+
+router.get('/waktu-wit', async (req, res, next) => {
+        var apikeyInput = req.query.apikey
+            
+	if(!apikeyInput) return res.json(loghandler.notparam)
+	if(apikeyInput != `YudaXwer`) return res.json(loghandler.invalidKey)
+	
+  res.json({
+    author: 'YudaXwer',
+    kontol: {
+    memek: `${waktu_wit}`
+    }
+  })
+           .catch(e => {
+             res.json(loghandler.error)
+         })
+});
+
+router.get('/waktu-wib', async (req, res, next) => {
+        var apikeyInput = req.query.apikey
+            
+	if(!apikeyInput) return res.json(loghandler.notparam)
+	if(apikeyInput != `YudaXwer`) return res.json(loghandler.invalidKey)
+	
+  res.json({
+    author: 'Yuda',
+    kontol: {
+    memek: `${waktu_wib}`
+    }
+  })
+           .catch(e => {
+             res.json(loghandler.error)
+         })
+});
 
 router.get('/cekapikey', async(req, res, next) => {
   const apikey = req.query.apikey;
