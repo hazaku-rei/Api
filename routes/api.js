@@ -104,12 +104,6 @@ loghandler = {
         code: 406,
         message: 'masukan parameter kata'
     },
-    notnama: {
-        status: false,
-        creator: `${creator}`,
-        code: 406,
-        message: 'Masukan parameter nama'
-    },
     nottext: {
         status: false,
         creator: `${creator}`,
@@ -2433,11 +2427,11 @@ router.get('/maker/skatch', async(req, res, next) => {
 });
 router.get('/maker/tololserti', async(req, res, next) => {
   const apikey = req.query.apikey;
-  const nama = req.query.nama;
-  if(!nama) return res.json(loghandler.notnama)
+  const url = req.query.url;
+  if(!text) return res.json(loghandler.noturl)
   if(!apikey) return res.json(loghandler.notparam)
   if(listkey.includes(apikey)){
-  let hasil = 'https://lolhuman.herokuapp.com/api/toloserti?apikey=muzharzain&name='+ nama +'
+  let hasil = `https://lolhuman.herokuapp.com/api/toloserti?apikey=muzharzain&name=${text}`
   data = await fetch(hasil).then(v => v.buffer())
          await fs.writeFileSync(__path +'/tmp/tololserti.jpeg', data)
         res.sendFile(__path+'/tmp/tololserti.jpeg')
