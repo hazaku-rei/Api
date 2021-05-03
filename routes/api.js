@@ -713,7 +713,25 @@ router.get('/info/gempa', async (req, res, next) => {
 res.json(loghandler.invalidKey)
 }
 })
-
+router.get('/nickepep', async(req, res, next) => {
+  const apikey = req.query.apikey;
+  if(!apikey) return res.json(loghandler.notparam)
+  if(listkey.includes(apikey)){
+    fetch(encodeURI(`https://api.zeks.xyz/api/nickepep?apikey=apivinz`))
+ 	   .then(response => response.json())
+        .then(data => {
+        var result = data;
+             res.json({
+                 result
+             })
+         })
+         .catch(e => {
+         	res.json(loghandler.error)
+})
+} else {
+res.json(loghandler.invalidKey)
+}
+})
 
 router.get('/muslim/kisahnabi', async (req, res, next) => {
 	var nabi = req.query.nabi,
@@ -2277,9 +2295,8 @@ router.get('/textpro/3d-gradient', async(req, res, next) => {
   }
 });
 
-router.get('/textpro/porn-hub', async(req, res, next) => {
-
-  const apikey = req.query.apikey;
+router.get('/maker/porn-hub', async (req, res, next) => {
+     const apikey = req.query.apikey;
 
   const text = req.query.text1;
   const text2 = req.query.text2;
@@ -2288,20 +2305,11 @@ router.get('/textpro/porn-hub', async(req, res, next) => {
   if(!text) return res.json(loghandler.nottext1)
   if(!text2) return res.json(loghandler.nottext2)
   
-  if(listkey.includes(apikey)){
-    zrapi 
-  .textpro("https://textpro.me/pornhub-style-logo-online-generator-free-977.html", [
-    text, text2
-  ])
-  .then((data) => {
-    res.json({
-      status: true,
-      code: 200,
-      creator: `${creator}`,
-      result: data
-    })
-  })
-  .catch((err) => console.log(err));
+     if(listkey.includes(apikey)) {
+    let hasil = 'https://api.zeks.xyz/api/phlogo?text1=${text}&text2=${text2}&apikey=apivinz' 
+    data = await fetch(hasil).then(v => v.buffer())
+    await fs.writeFileSync(__path +'/tmp/phlogo.jpeg', data)
+    res.sendFile(__path +'/tmp/phlogo.jpeg')
   } else {
     res.json(loghandler.invalidKey)
   }
@@ -2421,6 +2429,76 @@ router.get('/maker/skatch', async(req, res, next) => {
   data = await fetch(hasil).then(v => v.buffer())
          await fs.writeFileSync(__path +'/tmp/skatch.jpeg', data)
         res.sendFile(__path+'/tmp/skatch.jpeg')
+  } else {
+    res.json(loghandler.invalidKey)
+  }
+});
+router.get('/maker/bakar', async(req, res, next) => {
+  const apikey = req.query.apikey;
+  const url = req.query.url;
+  if(!url) return res.json(loghandler.noturl)
+  if(!apikey) return res.json(loghandler.notparam)
+  if(listkey.includes(apikey)){
+  let hasil = `https://videfikri.com/api/textmaker/burneffect/?urlgbr=${url}`
+  data = await fetch(hasil).then(v => v.buffer())
+         await fs.writeFileSync(__path +'/tmp/bakar.jpeg', data)
+        res.sendFile(__path+'/tmp/bakar.jpeg')
+  } else {
+    res.json(loghandler.invalidKey)
+  }
+});
+router.get('/maker/trash', async(req, res, next) => {
+  const apikey = req.query.apikey;
+  const url = req.query.url;
+  if(!url) return res.json(loghandler.noturl)
+  if(!apikey) return res.json(loghandler.notparam)
+  if(listkey.includes(apikey)){
+  let hasil = `https://leyscoders-api.herokuapp.com/api/img/trash?url=${url}&apikey=OneDayOneCharity`
+  data = await fetch(hasil).then(v => v.buffer())
+         await fs.writeFileSync(__path +'/tmp/trash.jpeg', data)
+        res.sendFile(__path+'/tmp/trash.jpeg')
+  } else {
+    res.json(loghandler.invalidKey)
+  }
+});
+router.get('/maker/blur', async(req, res, next) => {
+  const apikey = req.query.apikey;
+  const url = req.query.url;
+  if(!url) return res.json(loghandler.noturl)
+  if(!apikey) return res.json(loghandler.notparam)
+  if(listkey.includes(apikey)){
+  let hasil = `https://leyscoders-api.herokuapp.com/api/img/blur?url=${url}&apikey=OneDayOneCharity`
+  data = await fetch(hasil).then(v => v.buffer())
+         await fs.writeFileSync(__path +'/tmp/blur.jpeg', data)
+        res.sendFile(__path+'/tmp/blur.jpeg')
+  } else {
+    res.json(loghandler.invalidKey)
+  }
+});
+router.get('/maker/invert', async(req, res, next) => {
+  const apikey = req.query.apikey;
+  const url = req.query.url;
+  if(!url) return res.json(loghandler.noturl)
+  if(!apikey) return res.json(loghandler.notparam)
+  if(listkey.includes(apikey)){
+  let hasil = `https://leyscoders-api.herokuapp.com/api/img/invert?url=${url}&apikey=OneDayOneCharity`
+  data = await fetch(hasil).then(v => v.buffer())
+         await fs.writeFileSync(__path +'/tmp/invert.jpeg', data)
+        res.sendFile(__path+'/tmp/invert.jpeg')
+  } else {
+    res.json(loghandler.invalidKey)
+  }
+});
+router.get('/maker/gtav', async(req, res, next) => {
+  const apikey = req.query.apikey;
+  const url = req.query.url;
+  if(!url) return res.json(loghandler.noturl)
+  if(!apikey) return res.json(loghandler.notparam)
+  if(listkey.includes(apikey)){
+  let hasil = `https://videfikri.com/api/textmaker/gtavposter/?urlgbr=${url}`
+  data = await fetch(hasil).then(v => v.buffer())
+         await fs.writeFileSync(__path +'/tmp/gtav.jpeg', data)
+        res.sendFile(__path+'/tmp/gtav.jpeg')
   } else {
     res.json(loghandler.invalidKey)
   }
@@ -2552,6 +2630,426 @@ router.get('/maker/badgirlserti', async(req, res, next) => {
     res.json(loghandler.invalidKey)
   }
 });
+router.get('/maker/hekelserti', async(req, res, next) => {
+  const apikey = req.query.apikey;
+  const text = req.query.text;
+  if(!text) return res.json(loghandler.nottext)
+  if(!apikey) return res.json(loghandler.notparam)
+  if(listkey.includes(apikey)){
+  let hasil = `https://onlydevcity.xyz/HekerSerti/img.php?nama=${text}`
+  data = await fetch(hasil).then(v => v.buffer())
+         await fs.writeFileSync(__path +'/tmp/hekelserti.jpeg', data)
+        res.sendFile(__path+'/tmp/hekelserti.jpeg')
+  } else {
+    res.json(loghandler.invalidKey)
+  }
+});
+router.get('/maker/babuserti', async(req, res, next) => {
+  const apikey = req.query.apikey;
+  const text = req.query.text;
+  if(!text) return res.json(loghandler.nottext)
+  if(!apikey) return res.json(loghandler.notparam)
+  if(listkey.includes(apikey)){
+  let hasil = `https://onlydevcity.xyz/BabuSerti/img.php?nama=${text}`
+  data = await fetch(hasil).then(v => v.buffer())
+         await fs.writeFileSync(__path +'/tmp/babuserti.jpeg', data)
+        res.sendFile(__path+'/tmp/babuserti.jpeg')
+  } else {
+    res.json(loghandler.invalidKey)
+  }
+});
+router.get('/maker/fflserti', async(req, res, next) => {
+  const apikey = req.query.apikey;
+  const text = req.query.text;
+  if(!text) return res.json(loghandler.nottext)
+  if(!apikey) return res.json(loghandler.notparam)
+  if(listkey.includes(apikey)){
+  let hasil = `https://onlydevcity.xyz/EpepSerti/img.php?nama=${text}`
+  data = await fetch(hasil).then(v => v.buffer())
+         await fs.writeFileSync(__path +'/tmp/ffserti.jpeg', data)
+        res.sendFile(__path+'/tmp/ffserti.jpeg')
+  } else {
+    res.json(loghandler.invalidKey)
+  }
+});
+router.get('/maker/bocilepepserti', async(req, res, next) => {
+  const apikey = req.query.apikey;
+  const text = req.query.text;
+  if(!text) return res.json(loghandler.nottext)
+  if(!apikey) return res.json(loghandler.notparam)
+  if(listkey.includes(apikey)){
+  let hasil = `https://onlydevcity.xyz/CilEpepSerti/img.php?nama=${text}`
+  data = await fetch(hasil).then(v => v.buffer())
+         await fs.writeFileSync(__path +'/tmp/bocilepepserti.jpeg', data)
+        res.sendFile(__path+'/tmp/bocilepepserti.jpeg')
+  } else {
+    res.json(loghandler.invalidKey)
+  }
+});
+router.get('/maker/gayserti', async(req, res, next) => {
+  const apikey = req.query.apikey;
+  const text = req.query.text;
+  if(!text) return res.json(loghandler.nottext)
+  if(!apikey) return res.json(loghandler.notparam)
+  if(listkey.includes(apikey)){
+  let hasil = `https://onlydevcity.xyz/GaySerti/img.php?nama=${text}`
+  data = await fetch(hasil).then(v => v.buffer())
+         await fs.writeFileSync(__path +'/tmp/gayserti.jpeg', data)
+        res.sendFile(__path+'/tmp/gayserti.jpeg')
+  } else {
+    res.json(loghandler.invalidKey)
+  }
+});
+router.get('/maker/gayserti', async(req, res, next) => {
+  const apikey = req.query.apikey;
+  const text = req.query.text;
+  if(!text) return res.json(loghandler.nottext)
+  if(!apikey) return res.json(loghandler.notparam)
+  if(listkey.includes(apikey)){
+  let hasil = `https://onlydevcity.xyz/GaySerti/img.php?nama=${text}`
+ 	data = await fetch(hasil).then(v => v.buffer())
+     await fs.writeFileSync(__path +'/tmp/gayserti.jpeg', data)
+        res.sendFile(__path+'/tmp/gayserti.jpeg')
+  } else {
+    res.json(loghandler.invalidKey)
+  }
+});
+router.get('/maker/sadboyserti', async(req, res, next) => {
+  const apikey = req.query.apikey;
+  const text = req.query.text;
+  if(!text) return res.json(loghandler.nottext)
+  if(!apikey) return res.json(loghandler.notparam)
+  if(listkey.includes(apikey)){
+  let hasil = `https://onlydevcity.xyz/SadBoySerti/img.php?nama=${text}`
+ 	data = await fetch(hasil).then(v => v.buffer())
+     await fs.writeFileSync(__path +'/tmp/sadboyserti.jpeg', data)
+        res.sendFile(__path+'/tmp/sadboyserti.jpeg')
+  } else {
+    res.json(loghandler.invalidKey)
+  }
+});
+router.get('/maker/surgaserti', async(req, res, next) => {
+  const apikey = req.query.apikey;
+  const text = req.query.text;
+  if(!text) return res.json(loghandler.nottext)
+  if(!apikey) return res.json(loghandler.notparam)
+  if(listkey.includes(apikey)){
+  let hasil = `https://onlydevcity.xyz/SurgaSerti/img.php?nama=${text}`
+ 	data = await fetch(hasil).then(v => v.buffer())
+     await fs.writeFileSync(__path +'/tmp/surgaserti.jpeg', data)
+        res.sendFile(__path+'/tmp/surgaserti.jpeg')
+  } else {
+    res.json(loghandler.invalidKey)
+  }
+});
+router.get('/maker/pinterserti', async(req, res, next) => {
+  const apikey = req.query.apikey;
+  const text = req.query.text;
+  if(!text) return res.json(loghandler.nottext)
+  if(!apikey) return res.json(loghandler.notparam)
+  if(listkey.includes(apikey)){
+  let hasil = `https://onlydevcity.xyz/PinterSerti/img.php?nama=${text}`
+ 	data = await fetch(hasil).then(v => v.buffer())
+     await fs.writeFileSync(__path +'/tmp/pinterserti.jpeg', data)
+        res.sendFile(__path+'/tmp/pinterserti.jpeg')
+  } else {
+    res.json(loghandler.invalidKey)
+  }
+});
+router.get('/maker/editodberkelasserti', async(req, res, next) => {
+  const apikey = req.query.apikey;
+  const text = req.query.text;
+  if(!text) return res.json(loghandler.nottext)
+  if(!apikey) return res.json(loghandler.notparam)
+  if(listkey.includes(apikey)){
+  let hasil = `https://onlydevcity.xyz/EditorBerkelasSerti/img.php?nama=${text}`
+ 	data = await fetch(hasil).then(v => v.buffer())
+     await fs.writeFileSync(__path +'/tmp/editorberkelasserti.jpeg', data)
+        res.sendFile(__path+'/tmp/editorberkelasserti.jpeg')
+  } else {
+    res.json(loghandler.invalidKey)
+  }
+});
+router.get('/maker/goodlookingserti', async(req, res, next) => {
+  const apikey = req.query.apikey;
+  const text = req.query.text;
+  if(!text) return res.json(loghandler.nottext)
+  if(!apikey) return res.json(loghandler.notparam)
+  if(listkey.includes(apikey)){
+  let hasil = `https://onlydevcity.xyz/GoodLookingSerti/img.php?nama=${text}`
+ 	data = await fetch(hasil).then(v => v.buffer())
+     await fs.writeFileSync(__path +'/tmp/goodlookingserti.jpeg', data)
+        res.sendFile(__path+'/tmp/gayserti.jpeg')
+  } else {
+    res.json(loghandler.invalidKey)
+  }
+});
+router.get('/maker/fucekboyserti', async(req, res, next) => {
+  const apikey = req.query.apikey;
+  const text = req.query.text;
+  if(!text) return res.json(loghandler.nottext)
+  if(!apikey) return res.json(loghandler.notparam)
+  if(listkey.includes(apikey)){
+  let hasil = `https://onlydevcity.xyz/FucekBoySerti/img.php?nama=${text}`
+ 	data = await fetch(hasil).then(v => v.buffer())
+     await fs.writeFileSync(__path +'/tmp/fucekboyserti.jpeg', data)
+        res.sendFile(__path+'/tmp/fucekboyserti.jpeg')
+  } else {
+    res.json(loghandler.invalidKey)
+  }
+});
+router.get('/maker/jametserti', async(req, res, next) => {
+  const apikey = req.query.apikey;
+  const text = req.query.text;
+  if(!text) return res.json(loghandler.nottext)
+  if(!apikey) return res.json(loghandler.notparam)
+  if(listkey.includes(apikey)){
+  let hasil = `https://onlydevcity.xyz/JametSerti/img.php?nama=${text}`
+ 	data = await fetch(hasil).then(v => v.buffer())
+     await fs.writeFileSync(__path +'/tmp/jametserti.jpeg', data)
+        res.sendFile(__path+'/tmp/jametserti.jpeg')
+  } else {
+    res.json(loghandler.invalidKey)
+  }
+});
+router.get('/maker/youtuberserti', async(req, res, next) => {
+  const apikey = req.query.apikey;
+  const text = req.query.text;
+  if(!text) return res.json(loghandler.nottext)
+  if(!apikey) return res.json(loghandler.notparam)
+  if(listkey.includes(apikey)){
+  let hasil = `https://onlydevcity.xyz/YoutuberSerti/img.php?nama=${text}`
+ 	data = await fetch(hasil).then(v => v.buffer())
+     await fs.writeFileSync(__path +'/tmp/youtuberserti.jpeg', data)
+        res.sendFile(__path+'/tmp/youtuberserti.jpeg')
+  } else {
+    res.json(loghandler.invalidKey)
+  }
+});
+router.get('/maker/jametserti', async(req, res, next) => {
+  const apikey = req.query.apikey;
+  const text = req.query.text;
+  if(!text) return res.json(loghandler.nottext)
+  if(!apikey) return res.json(loghandler.notparam)
+  if(listkey.includes(apikey)){
+  let hasil = `https://onlydevcity.xyz/JametSerti/img.php?nama=${text}`
+ 	data = await fetch(hasil).then(v => v.buffer())
+     await fs.writeFileSync(__path +'/tmp/jametserti.jpeg', data)
+        res.sendFile(__path+'/tmp/jametserti.jpeg')
+  } else {
+    res.json(loghandler.invalidKey)
+  }
+});
+router.get('/maker/fftourserti', async(req, res, next) => {
+  const apikey = req.query.apikey;
+  const text = req.query.text;
+  if(!text) return res.json(loghandler.nottext)
+  if(!apikey) return res.json(loghandler.notparam)
+  if(listkey.includes(apikey)){
+  let hasil = `https://onlydevcity.xyz/FFSerti/img.php?nama=${text}`
+ 	data = await fetch(hasil).then(v => v.buffer())
+     await fs.writeFileSync(__path +'/tmp/fftourserti.jpeg', data)
+        res.sendFile(__path+'/tmp/fftourserti.jpeg')
+  } else {
+    res.json(loghandler.invalidKey)
+  }
+});
+router.get('/maker/fftourserti2', async(req, res, next) => {
+  const apikey = req.query.apikey;
+  const text = req.query.text;
+  if(!text) return res.json(loghandler.nottext)
+  if(!apikey) return res.json(loghandler.notparam)
+  if(listkey.includes(apikey)){
+  let hasil = `https://onlydevcity.xyz/FFSerti2/img.php?nama=${text}`
+ 	data = await fetch(hasil).then(v => v.buffer())
+     await fs.writeFileSync(__path +'/tmp/fftourserti2.jpeg', data)
+        res.sendFile(__path+'/tmp/fftourserti2.jpeg')
+  } else {
+    res.json(loghandler.invalidKey)
+  }
+});
+router.get('/maker/fftourserti3', async(req, res, next) => {
+  const apikey = req.query.apikey;
+  const text = req.query.text;
+  if(!text) return res.json(loghandler.nottext)
+  if(!apikey) return res.json(loghandler.notparam)
+  if(listkey.includes(apikey)){
+  let hasil = `https://onlydevcity.xyz/FFSerti3/img.php?nama=${text}`
+ 	data = await fetch(hasil).then(v => v.buffer())
+     await fs.writeFileSync(__path +'/tmp/fftourserti3.jpeg', data)
+        res.sendFile(__path+'/tmp/fftourserti3.jpeg')
+  } else {
+    res.json(loghandler.invalidKey)
+  }
+});
+router.get('/maker/fftourserti4', async(req, res, next) => {
+  const apikey = req.query.apikey;
+  const text = req.query.text;
+  if(!text) return res.json(loghandler.nottext)
+  if(!apikey) return res.json(loghandler.notparam)
+  if(listkey.includes(apikey)){
+  let hasil = `https://onlydevcity.xyz/FFSerti4/img.php?nama=${text}`
+ 	data = await fetch(hasil).then(v => v.buffer())
+     await fs.writeFileSync(__path +'/tmp/fftourserti4.jpeg', data)
+        res.sendFile(__path+'/tmp/fftourserti4.jpeg')
+  } else {
+    res.json(loghandler.invalidKey)
+  }
+});
+router.get('/maker/fftourserti5', async(req, res, next) => {
+  const apikey = req.query.apikey;
+  const text = req.query.text;
+  if(!text) return res.json(loghandler.nottext)
+  if(!apikey) return res.json(loghandler.notparam)
+  if(listkey.includes(apikey)){
+  let hasil = `https://onlydevcity.xyz/FFSerti5/img.php?nama=${text}`
+ 	data = await fetch(hasil).then(v => v.buffer())
+     await fs.writeFileSync(__path +'/tmp/fftourserti5.jpeg', data)
+        res.sendFile(__path+'/tmp/fftourserti5.jpeg')
+  } else {
+    res.json(loghandler.invalidKey)
+  }
+});
+router.get('/maker/mltourserti', async(req, res, next) => {
+  const apikey = req.query.apikey;
+  const text = req.query.text;
+  if(!text) return res.json(loghandler.nottext)
+  if(!apikey) return res.json(loghandler.notparam)
+  if(listkey.includes(apikey)){
+  let hasil = `https://onlydevcity.xyz/MLTourSerti/img.php?nama=${text}`
+ 	data = await fetch(hasil).then(v => v.buffer())
+     await fs.writeFileSync(__path +'/tmp/mltourserti.jpeg', data)
+        res.sendFile(__path+'/tmp/mltourserti.jpeg')
+  } else {
+    res.json(loghandler.invalidKey)
+  }
+});
+router.get('/maker/mltourserti2', async(req, res, next) => {
+  const apikey = req.query.apikey;
+  const text = req.query.text;
+  if(!text) return res.json(loghandler.nottext)
+  if(!apikey) return res.json(loghandler.notparam)
+  if(listkey.includes(apikey)){
+  let hasil = `https://onlydevcity.xyz/MLTourSerti2/img.php?nama=${text}`
+ 	data = await fetch(hasil).then(v => v.buffer())
+     await fs.writeFileSync(__path +'/tmp/mltourserti2.jpeg', data)
+        res.sendFile(__path+'/tmp/mltourserti2.jpeg')
+  } else {
+    res.json(loghandler.invalidKey)
+  }
+});
+router.get('/maker/mltourserti3', async(req, res, next) => {
+  const apikey = req.query.apikey;
+  const text = req.query.text;
+  if(!text) return res.json(loghandler.nottext)
+  if(!apikey) return res.json(loghandler.notparam)
+  if(listkey.includes(apikey)){
+  let hasil = `https://onlydevcity.xyz/MLTourSerti3/img.php?nama=${text}`
+ 	data = await fetch(hasil).then(v => v.buffer())
+     await fs.writeFileSync(__path +'/tmp/mltourserti3.jpeg', data)
+        res.sendFile(__path+'/tmp/mltourserti3.jpeg')
+  } else {
+    res.json(loghandler.invalidKey)
+  }
+});
+router.get('/maker/mltourserti4', async(req, res, next) => {
+  const apikey = req.query.apikey;
+  const text = req.query.text;
+  if(!text) return res.json(loghandler.nottext)
+  if(!apikey) return res.json(loghandler.notparam)
+  if(listkey.includes(apikey)){
+  let hasil = `https://onlydevcity.xyz/MLTourSerti4/img.php?nama=${text}`
+ 	data = await fetch(hasil).then(v => v.buffer())
+     await fs.writeFileSync(__path +'/tmp/mltourserti4.jpeg', data)
+        res.sendFile(__path+'/tmp/mltourserti4.jpeg')
+  } else {
+    res.json(loghandler.invalidKey)
+  }
+});
+router.get('/maker/mltourserti5', async(req, res, next) => {
+  const apikey = req.query.apikey;
+  const text = req.query.text;
+  if(!text) return res.json(loghandler.nottext)
+  if(!apikey) return res.json(loghandler.notparam)
+  if(listkey.includes(apikey)){
+  let hasil = `https://onlydevcity.xyz/MLTourSerti5/img.php?nama=${text}`
+ 	data = await fetch(hasil).then(v => v.buffer())
+     await fs.writeFileSync(__path +'/tmp/mltourserti5.jpeg', data)
+        res.sendFile(__path+'/tmp/mltourserti5.jpeg')
+  } else {
+    res.json(loghandler.invalidKey)
+  }
+});
+router.get('/maker/pubgtourserti', async(req, res, next) => {
+  const apikey = req.query.apikey;
+  const text = req.query.text;
+  if(!text) return res.json(loghandler.nottext)
+  if(!apikey) return res.json(loghandler.notparam)
+  if(listkey.includes(apikey)){
+  let hasil = `https://onlydevcity.xyz/PubgTourSerti/img.php?nama=${text}`
+ 	data = await fetch(hasil).then(v => v.buffer())
+     await fs.writeFileSync(__path +'/tmp/pubgtourserti.jpeg', data)
+        res.sendFile(__path+'/tmp/pubgtourserti.jpeg')
+  } else {
+    res.json(loghandler.invalidKey)
+  }
+});
+router.get('/maker/pubgtourserti2', async(req, res, next) => {
+  const apikey = req.query.apikey;
+  const text = req.query.text;
+  if(!text) return res.json(loghandler.nottext)
+  if(!apikey) return res.json(loghandler.notparam)
+  if(listkey.includes(apikey)){
+  let hasil = `https://onlydevcity.xyz/PubgTourSerti2/img.php?nama=${text}`
+ 	data = await fetch(hasil).then(v => v.buffer())
+     await fs.writeFileSync(__path +'/tmp/pubgtourserti2.jpeg', data)
+        res.sendFile(__path+'/tmp/pubgtourserti2.jpeg')
+  } else {
+    res.json(loghandler.invalidKey)
+  }
+});
+router.get('/maker/pubgtourserti3', async(req, res, next) => {
+  const apikey = req.query.apikey;
+  const text = req.query.text;
+  if(!text) return res.json(loghandler.nottext)
+  if(!apikey) return res.json(loghandler.notparam)
+  if(listkey.includes(apikey)){
+  let hasil = `https://onlydevcity.xyz/PubgTourSerti3/img.php?nama=${text}`
+ 	data = await fetch(hasil).then(v => v.buffer())
+     await fs.writeFileSync(__path +'/tmp/pubgtourserti3.jpeg', data)
+        res.sendFile(__path+'/tmp/pubgtourserti3.jpeg')
+  } else {
+    res.json(loghandler.invalidKey)
+  }
+});
+router.get('/maker/pubgtourserti4', async(req, res, next) => {
+  const apikey = req.query.apikey;
+  const text = req.query.text;
+  if(!text) return res.json(loghandler.nottext)
+  if(!apikey) return res.json(loghandler.notparam)
+  if(listkey.includes(apikey)){
+  let hasil = `https://onlydevcity.xyz/PubgTourSerti4/img.php?nama=${text}`
+ 	data = await fetch(hasil).then(v => v.buffer())
+     await fs.writeFileSync(__path +'/tmp/pubgtourserti4.jpeg', data)
+        res.sendFile(__path+'/tmp/pubgtourserti4.jpeg')
+  } else {
+    res.json(loghandler.invalidKey)
+  }
+});
+router.get('/maker/pubgtourserti5', async(req, res, next) => {
+  const apikey = req.query.apikey;
+  const text = req.query.text;
+  if(!text) return res.json(loghandler.nottext)
+  if(!apikey) return res.json(loghandler.notparam)
+  if(listkey.includes(apikey)){
+  let hasil = `https://onlydevcity.xyz/PubgTourSerti5/img.php?nama=${text}`
+ 	data = await fetch(hasil).then(v => v.buffer())
+     await fs.writeFileSync(__path +'/tmp/pubgtourserti5.jpeg', data)
+        res.sendFile(__path+'/tmp/pubgtourserti5.jpeg')
+  } else {
+    res.json(loghandler.invalidKey)
+  }
+});
 router.get('/maker/emoji2png', async(req, res, next) => {
   const apikey = req.query.apikey;
   const Emoji = req.query.text;
@@ -2560,7 +3058,7 @@ router.get('/maker/emoji2png', async(req, res, next) => {
   if(!Emoji) return res.json(loghandler.nottext)
   
   if(listkey.includes(apikey)) {
-
+-
     emoji.get(Emoji)
     .then(img_emoji => {
       const result = {
