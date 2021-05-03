@@ -3050,6 +3050,23 @@ router.get('/maker/pubgtourserti5', async(req, res, next) => {
     res.json(loghandler.invalidKey)
   }
 });
+router.get('/welcomeimage', async(req, res, next) => {
+  const apikey = req.query.apikey;
+  const text = req.query.text;
+  const url = req.query.url;
+  if(!text) return res.json(loghandler.nottext)
+  if(!url) return res.json(loghandler.noturl)
+  if(!apikey) return res.json(res.sendFile(invalidKey))
+  if(listkey.includes(apikey)){
+  let hasil = `https://lolhuman.herokuapp.com/api/welcomeimage?apikey=muzharzain&img=${url}&text=${text}`
+ 	data = await fetch(hasil).then(v => v.buffer())
+     await fs.writeFileSync(__path +'/tmp/welcomeimage.jpeg', data)
+        res.sendFile(__path+'/tmp/welcomeimage.jpeg')
+  } else {
+    res.json(loghandler.invalidKey)
+  }
+});
+
 router.get('/maker/emoji2png', async(req, res, next) => {
   const apikey = req.query.apikey;
   const Emoji = req.query.text;
