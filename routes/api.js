@@ -150,7 +150,7 @@ loghandler = {
         status: false,
         creator: `${creator}`,
         code: 406,
-        message: 'apikey invalid'
+        message: 'apikey invalid!, get apikey on wa.me/6283833271665'
     },
     invalidlink: {
         status: false,
@@ -165,7 +165,7 @@ loghandler = {
     error: {
         status: false,
         creator: `${creator}`,
-        message: 'emror bruh'
+        message: 'error bruh'
     }
 }
 
