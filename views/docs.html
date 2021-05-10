@@ -804,6 +804,23 @@
                      <h4 class="breadcrumb-item active">Documentation</h4>
 
                   </ul>
+                  
+                  <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card h-100">
+                <div class="card-body">
+                  <div class="row align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-uppercase mb-1">Visitor Count</div>
+                      <br>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800" id="visits">00</div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-eye fa-2x text-primary"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
 
                   <div class="row">
 
@@ -815,13 +832,13 @@
 
                               <div class="info-box7-block">
 
-                                 <h6 class="m-b-20 text-right"> Total Visitor</h6>
+                                 <h6 class="m-b-20 text-right"> Total Hit</h6>
 
 				 <h4>
 
                                  <i data-feather="battery"></i> <span id="visit"> 0 </span></h4>
 
-                                 <p class="mb-0 mt-3 text-muted"> Jumlah Pengunjung</p>
+                                 <p class="mb-0 mt-3 text-muted"> Jumlah Request</p>
 
                               </div>
 
@@ -880,6 +897,28 @@
                      </div>
 
 		    </div>
+		    <form action="/api/cekapikey">
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card h-100">
+                <div class="card-body">
+                  <div class="row align-items-center">
+                    <div class="col mr-2">
+           <div class="h6 mb-0 font-weight-bold text-dark-800 text-uppercase">
+          <h6 class="text-center">[+] cek apikey [+]</h6>
+          </div>
+           <input type="password" class="form-control" placeholder="Check Your apikey" name="apikey" required=""><br>
+            <button class="btn btn-danger btn-icon-split">
+             <span class="icon text-white-50">
+              <i class="fas fa-check"></i>
+             </span>
+             <span class="text">Check</span>
+            </button>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+      </form>
 
                   <div class="row">
 
@@ -1200,6 +1239,8 @@
       </div>
 
       <!-- General JS Scripts -->
+      
+      <script async src="https://api.countapi.xyz/hit/ririwgaming.herokuapp.com/visits?callback=cb"></script>
 
       <script src="https://h4ck3rs404-api.herokuapp.com/assets/js/app.min.js"></script>
 
