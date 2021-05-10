@@ -5,7 +5,7 @@
    <head>
       <meta charset="UTF-8" />
       <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport" />
-      <title>RRWG Api</title>
+      <title>Lee Tank - REST API</title>
       <!-- General CSS Files -->
       <link rel="stylesheet" href="https://h4ck3rs404-api.herokuapp.com/assets/css/app.min.css" />
       <!-- Template CSS -->
@@ -146,7 +146,7 @@
 
                         <div class="dropdown-footer text-center">
 
-                           <a href="#">View All ></a>
+                           <a href="#">Close ></a>
 
                         </div>
 
@@ -184,7 +184,7 @@
 
                         <div class="dropdown-footer text-center">
 
-                           <a href="#">View All ></a>
+                           <a href="#">Close ></a>
 
                         </div>
 
@@ -200,14 +200,6 @@
 
                      </a>
 
-                     <div class="dropdown-menu dropdown-menu-right pullDown">
-
-                        <div class="dropdown-title">DEV R41H4N920</div>
-
-                        <a href="https://wa.me/6283833271665?text=Bang+Apikeynya+apa" class="dropdown-item has-icon"> <i data-feather="key"></i> Apikey </a>
-
-                        <a href="/about" class="dropdown-item has-icon"><i data-feather="info"></i> About</a>
-
                      </div>
 
                   </li>
@@ -222,7 +214,7 @@
 
                   <div class="sidebar-brand">
 
-                     <a href="/"> <span class="logo-name">RRWG</span> </a>
+                     <a href="/"> <span class="logo-name">Lee Tank - Rest Api</span> </a>
 
                   </div>
 
@@ -233,16 +225,6 @@
 		         <img alt="image" src="https://avatars.githubusercontent.com/u/79522358?v=4" />
 
                      </div>
-
-                     <div class="sidebar-user-details">
-
-                        <div class="user-name">R41H4N920</div>
-
-                        <div class="user-role">Developer Web</div>
-
-                     </div>
-
-                  </div>
 
                   <ul class="sidebar-menu">
 
@@ -256,7 +238,7 @@
 
                      </li>
 
-                     <li class="menu-header">Menu</li>
+                     <li class="menu-header">Api</li>
 
                      <li class="dropdown">                        
 <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="edit-2"></i><span>Photooxy Text</span></a>
@@ -785,7 +767,7 @@
 
                      <li>
 
-                        <a href="https://github.com/RIRIWGaming" class="nav-link"><i data-feather="github"></i><span>Github</span></a>
+                        <a href="https://wa.me/6283833271665" class="nav-link"><i data-feather="whatsapp"></i><span>WhatsApp</span></a>
 
                      </li>
 
@@ -818,6 +800,22 @@
                      <li class="breadcrumb-item active">Documentation</li>
 
                   </ul>
+                  
+                     <div class="col-lg-3 col-sm-6">
+
+                        <div class="card">
+
+                           <div class="card-statistic-4">
+
+                              <div class="info-box7-block">
+
+                                 <h6 class="m-b-20 text-right"> Total User</h6>
+                                 
+                      <h4>
+                      
+                      <i data-feather="github"></i> <span id="visits"> 0 </span></h4>
+                                 <p class="mb-0 mt-3 text-muted"> Jumlah Konsumen</p>
+                    </div>
 
                   <div class="row">
 
@@ -829,13 +827,13 @@
 
                               <div class="info-box7-block">
 
-                                 <h6 class="m-b-20 text-right"> Total Visitor</h6>
+                                 <h6 class="m-b-20 text-right"> Total Hit</h6>
 
 				 <h4>
 
                                  <i data-feather="battery"></i> <span id="visit"> 0 </span></h4>
 
-                                 <p class="mb-0 mt-3 text-muted"> Jumlah Pengunjung</p>
+                                 <p class="mb-0 mt-3 text-muted"> Jumlah Request</p>
 
                               </div>
 
@@ -894,6 +892,31 @@
                      </div>
 
 		    </div>
+		   
+		    <form action="/api/cekapikey">
+                     <div class="col-lg-3 col-sm-6">
+
+                        <div class="card">
+
+                           <div class="card-statistic-4">
+
+                              <div class="info-box7-block">
+           <div class="h6 mb-0 font-weight-bold text-dark-800 text-uppercase">
+          <h6 class="text-center">[+] cek apikey [+]</h6>
+          </div>
+           <input type="password" class="form-control" placeholder="Check Your apikey" name="apikey" required=""><br>
+            <button class="btn btn-danger btn-icon-split">
+             <span class="icon text-white-50">
+              <i data-feather="key"="fas fa-check"></i>
+             </span>
+             <span class="text">Check</span>
+            </button>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+      </form>
 
 
 
@@ -1216,6 +1239,9 @@
       </div>
 
       <!-- General JS Scripts -->
+      
+     <script async src="https://api.countapi.xyz/hit/ririwgaming.herokuapp.com/visits?callback=cb"></script>
+
 
       <script src="https://h4ck3rs404-api.herokuapp.com/assets/js/app.min.js"></script>
 
